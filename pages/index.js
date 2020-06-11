@@ -10,13 +10,13 @@ class Index extends React.Component {
     open: false
   };
   render () {
+    const emptyState = !store.get("ids");
     return (
       <Page>
         <TitleBar
           primaryAction={{
             content: "Select products",
-            onAction: () => this.setState({ open: true 
-            }),
+            onAction: () => this.setState({ open: true }),
           }}
         />
         <ResourcePicker
@@ -24,25 +24,31 @@ class Index extends React.Component {
           showVariants={false}
           open={this.state.open}
           onSelection={(resources) => this.handleSelection(resources)}
-          onCancel={() => this.setState({
-            open: false
-          })}
+          onCancel={() =>
+            this.setState({
+              open: false,
+            })
+          }
         />
-        <Layout>
-          <EmptyState
-            heading="Discount your products temporarily"
-            action={{
-              content: "Select products",
-              onAction: () => this.setState({
-                open: true
-              }),
-            }}
-            image={img}
-          >
-            <p>Select products to change their price temporarily</p>
-          </EmptyState>
-        </Layout>
-        <ResourceListWithProducts />
+        {emptyState ? (
+          <Layout>
+            <EmptyState
+              heading="Discount your products temporarily"
+              action={{
+                content: "Select products",
+                onAction: () =>
+                  this.setState({
+                    open: true,
+                  }),
+              }}
+              image={img}
+            >
+              <p>Select products to change their price temporarily</p>
+            </EmptyState>
+          </Layout>
+        ) : (
+          <ResourceListWithProducts />
+        )}
       </Page>
     );
   }
