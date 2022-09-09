@@ -15,7 +15,7 @@
   "dependencies": {
     "@koa/router": "^9.0.1",
     "@shopify/app-bridge-react": "^1.21.6",
-    "@shopify/koa-shopify-auth": "^3.1.62",
+    "@shopify/koa-shopify-auth": "^3.1.63",
     "@shopify/koa-shopify-graphql-proxy": "^4.0.0",
     "@shopify/koa-shopify-webhooks": "^2.4.3",
     "@shopify/polaris": "^4.22.0",
